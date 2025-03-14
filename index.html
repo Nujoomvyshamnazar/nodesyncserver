@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Volkswagen Inventory Updates</title>
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+</head>
+<body>
+    <h1>Volkswagen Inventory Updates</h1>
+    <ul id="updates"></ul>
+
+    <script>
+        const socket = io("http://localhost:3006");
+        const updatesList = document.getElementById("updates");
+
+        socket.on("inventory_update", (data) => {
+            const li = document.createElement("li");
+            li.textContent = `🚗 Model: ${data.car_model} | 🏷️ Part: ${data.part_name} | 📦 Qty: ${data.quantity} | 💰 Price: $${data.price} | 🎯 Discount: ${data.discount_enabled ? "Yes" : "No"}`;
+            updatesList.appendChild(li);
+        });
+    </script>
+</body>
+</html>
