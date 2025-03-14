@@ -16,7 +16,7 @@ const io = socketIo(server, {
 app.use(cors());
 app.use(express.json()); // Middleware to parse JSON requests
 
-const WEBHOOK_SECRET = "katzion"; // Replace with a secure key
+const WEBHOOK_SECRET = "test"; // Replace with a secure key
 
 // Connect to the primary database (main_db)
 const mainDb = mysql.createPool({
